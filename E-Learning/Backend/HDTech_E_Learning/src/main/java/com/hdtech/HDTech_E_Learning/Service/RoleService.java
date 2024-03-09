@@ -1,14 +1,37 @@
 package com.hdtech.HDTech_E_Learning.Service;
 
 import com.hdtech.HDTech_E_Learning.Entity.Role;
+import com.hdtech.HDTech_E_Learning.Repository.RoleRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.processing.RoundEnvironment;
+import java.util.List;
 import java.util.Optional;
 
-public interface RoleService {
-    Role addRole(Role role);
+@Service
+public class RoleService implements RecordService<Role> {
 
-    Optional<Role> findById(long id);
+    private RoleRepository roleRepository;
 
-    Optional<Role> findByName(String name);
+    @Override
+    public Role add(Role role) {
+        return roleRepository.save(role);
+    }
+
+    @Override
+    public List<Role> addAll(List<Role> roles) {
+        return roleRepository.saveAll(roles);
+    }
+
+    @Override
+    public Optional<Role> findById(long id) {
+        return roleRepository.findById(id);
+    }
+
+    @Override
+    public Page<Role> findByNameContaining(String keyword, Pageable pageable) {
+        return null;
+    }
 }

@@ -4,8 +4,11 @@ import com.hdtech.HDTech_E_Learning.Entity.Course;
 import com.hdtech.HDTech_E_Learning.Entity.Enrollment;
 import com.hdtech.HDTech_E_Learning.Entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface EnrollmentService {
     Enrollment enroll(User user, Course course);
+
+    void enroll(User user, List<Course> courses);
 }
