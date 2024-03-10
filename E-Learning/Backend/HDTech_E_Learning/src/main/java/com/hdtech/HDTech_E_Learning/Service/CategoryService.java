@@ -35,4 +35,9 @@ public class CategoryService implements RecordService<Category> {
     public Page<Category> findByNameContaining(String keyword, Pageable pageable) {
         return categoryRepository.findByNameContaining(keyword, pageable);
     }
+
+    @Override
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
+    }
 }

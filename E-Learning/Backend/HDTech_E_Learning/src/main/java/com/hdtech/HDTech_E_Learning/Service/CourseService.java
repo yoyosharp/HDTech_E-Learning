@@ -1,6 +1,7 @@
 package com.hdtech.HDTech_E_Learning.Service;
 
 import com.hdtech.HDTech_E_Learning.Entity.Course;
+import com.hdtech.HDTech_E_Learning.Entity.User;
 import com.hdtech.HDTech_E_Learning.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,4 +36,10 @@ public class CourseService implements RecordService<Course>{
     public Page<Course> findByNameContaining(String keyword, Pageable pageable) {
         return courseRepository.findByNameContaining(keyword, pageable);
     }
+
+    @Override
+    public List<Course> findAll() {
+        return courseRepository.findAll();
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.hdtech.HDTech_E_Learning.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
 @Data
 public class User implements UserDetails {
     @Id
@@ -29,6 +29,7 @@ public class User implements UserDetails {
     private String userName;
 
     @Column
+    @JsonIgnore
     private String password;
 
     @Column
@@ -41,13 +42,22 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user",
+            fetch = FetchType.EAGER)
+    private List<Enrollment> enrollments;
+
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "completed_lectures",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "lecture_id")
     )
     private List<Lecture> completedLectures;
+
+    public User() {
+        completedLectures = new ArrayList<>();
+        enrollments = new ArrayList<>();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -2,6 +2,7 @@ package com.hdtech.HDTech_E_Learning.Service;
 
 import com.hdtech.HDTech_E_Learning.Entity.Role;
 import com.hdtech.HDTech_E_Learning.Repository.RoleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Service
 public class RoleService implements RecordService<Role> {
 
+    @Autowired
     private RoleRepository roleRepository;
 
     @Override
@@ -32,6 +34,11 @@ public class RoleService implements RecordService<Role> {
 
     @Override
     public Page<Role> findByNameContaining(String keyword, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public List<Role> findAll() {
         return null;
     }
 }

@@ -14,4 +14,6 @@ public interface RecordService<T>{
     Optional<T> findById(long id);
 
     Page<T> findByNameContaining(String keyword, Pageable pageable);
+
+    List<T> findAll();
 }

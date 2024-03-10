@@ -26,4 +26,5 @@ public class Category {
     public Category() {
         registered = 0;
     }
+
 }

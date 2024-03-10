@@ -29,7 +29,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().permitAll()
-                );
+
+                )
+                .formLogin(loginConfig -> loginConfig
+                        .loginProcessingUrl("/login")
+                        );
 
         return http.build();
     }

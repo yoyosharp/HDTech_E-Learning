@@ -11,9 +11,9 @@ create table if not exists roles(
 create table if not exists users(
 	id bigint auto_increment,
     email varchar(50),
-    full_name varchar(255),
+    user_name varchar(255),
     password varchar(60),
-    avatar text,
+    photo text,
     role_id bigint,
     status tinyint,
     primary key(id),
@@ -66,3 +66,5 @@ create table if not exists completed_lectures(
     foreign key(lecture_id) references lectures(id),
     foreign key(user_id) references users(id)
 );
+
+show tables;
